@@ -143,14 +143,11 @@ static int frames_number = 1;
     } else {
         UIGraphicsBeginImageContext(self.bounds.size);
     }
-    [self.layer renderInContext:UIGraphicsGetCurrentContext()];
+    // 可以截取视频或者绘制元素
+    [self drawViewHierarchyInRect:self.bounds afterScreenUpdates:FALSE];
+//    [self.layer renderInContext:UIGraphicsGetCurrentContext()];
     UIImage *screenshotImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
-    
-//    UIGraphicsBeginImageContextWithOptions(CGSizeMake(self.frame.size.width * kScreenScale , self.frame.size.height * kScreenScale), YES,  kScreenScale);
-//    [self.layer renderInContext:UIGraphicsGetCurrentContext()];
-//    UIImage *screenshotImage = UIGraphicsGetImageFromCurrentImageContext();
-//    UIGraphicsEndImageContext();
     
     // 02 修正当前图片的大小位置和尺寸
     CGRect inRect = [objc_getAssociatedObject(self, &screenRecording_inRect) CGRectValue];
