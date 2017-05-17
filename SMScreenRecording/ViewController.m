@@ -7,13 +7,11 @@
 //
 
 #import "ViewController.h"
-#import "UIView+SMScreenRecording.h"
+#import "SMScreenRecording.h"
 #import <MediaPlayer/MediaPlayer.h>
 
 @interface ViewController ()
-{
-    //    MPMoviePlayerViewController *movieVc;
-}
+
 @end
 
 @implementation ViewController
@@ -21,12 +19,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    _movieView.frame = CGRectMake(100, 100, 100, 100);
-    _movieView.backgroundColor = [UIColor grayColor];
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 50)];
-    label.text = @"测试";
-    [_movieView addSubview:label];
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -38,10 +30,8 @@
 
 - (IBAction)start:(id)sender {
     
-    [self.view.window startScreenRecordingWithCapInsets:UIEdgeInsetsMake(64, 0, 0, 0) failureBlock:^(NSError *error) {
-        NSLog(@"失败了");
+    [[SMScreenRecording shareManager] startScreenRecordingWithScreenView:self.view failureBlock:^(NSError *error) {
     }];
-    
 }
 
 - (IBAction)stop:(id)sender {
@@ -50,15 +40,23 @@
     //    //弹出播放器
     //    [self presentMoviePlayerViewControllerAnimated:movieVc];
     
-    [self.view.window endScreenRecordingWithFinishBlock:^(NSError *error, NSString *videoPath) {
-        if (error == nil) {
-            NSLog(@"path:%@",videoPath);
-            // 播放视频
-            MPMoviePlayerViewController *movieVc=[[MPMoviePlayerViewController alloc]initWithContentURL:[NSURL fileURLWithPath:kMoviePath]];
-            //弹出播放器
-            [self presentMoviePlayerViewControllerAnimated:movieVc];
-        }
+//    [self.view.window endScreenRecordingWithFinishBlock:^(NSError *error, NSString *videoPath) {
+//        if (error == nil) {
+//            NSLog(@"path:%@",videoPath);
+//            // 播放视频
+//            MPMoviePlayerViewController *movieVc=[[MPMoviePlayerViewController alloc]initWithContentURL:[NSURL fileURLWithPath:kMoviePath]];
+//            //弹出播放器
+//            [self presentMoviePlayerViewControllerAnimated:movieVc];
+//        }
+//    }];
+    
+    [[SMScreenRecording shareManager] endScreenRecordingWithFinishBlock:^(NSError *error, NSString *videoPath) {
+        // 播放视频
+        MPMoviePlayerViewController *movieVc= [[MPMoviePlayerViewController alloc] initWithContentURL:[NSURL fileURLWithPath:videoPath]];
+        //弹出播放器
+        [self presentMoviePlayerViewControllerAnimated:movieVc];
     }];
+    
 }
 
 - (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event

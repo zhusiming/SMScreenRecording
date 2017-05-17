@@ -13,7 +13,8 @@
 		547CB34A1E35F04200DA636F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 547CB3481E35F04200DA636F /* Main.storyboard */; };
 		547CB34C1E35F04200DA636F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 547CB34B1E35F04200DA636F /* Assets.xcassets */; };
 		547CB34F1E35F04200DA636F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 547CB34D1E35F04200DA636F /* LaunchScreen.storyboard */; };
-		547CB3591E35F0A500DA636F /* UIView+SMScreenRecording.m in Sources */ = {isa = PBXBuildFile; fileRef = 547CB3581E35F0A500DA636F /* UIView+SMScreenRecording.m */; };
+		54FB38161ECBF54300177259 /* VideoRecorder.mm in Sources */ = {isa = PBXBuildFile; fileRef = 54FB38151ECBF54300177259 /* VideoRecorder.mm */; };
+		54FB38451ECC358400177259 /* SMScreenRecording.m in Sources */ = {isa = PBXBuildFile; fileRef = 54FB38441ECC358400177259 /* SMScreenRecording.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,8 +28,10 @@
 		547CB34B1E35F04200DA636F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		547CB34E1E35F04200DA636F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		547CB3501E35F04200DA636F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		547CB3571E35F0A500DA636F /* UIView+SMScreenRecording.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SMScreenRecording.h"; sourceTree = "<group>"; };
-		547CB3581E35F0A500DA636F /* UIView+SMScreenRecording.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SMScreenRecording.m"; sourceTree = "<group>"; };
+		54FB38141ECBF54300177259 /* VideoRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoRecorder.h; sourceTree = "<group>"; };
+		54FB38151ECBF54300177259 /* VideoRecorder.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = VideoRecorder.mm; sourceTree = "<group>"; };
+		54FB38431ECC358400177259 /* SMScreenRecording.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMScreenRecording.h; sourceTree = "<group>"; };
+		54FB38441ECC358400177259 /* SMScreenRecording.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMScreenRecording.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +69,8 @@
 				547CB3431E35F04200DA636F /* AppDelegate.m */,
 				547CB3451E35F04200DA636F /* ViewController.h */,
 				547CB3461E35F04200DA636F /* ViewController.m */,
+				54FB38141ECBF54300177259 /* VideoRecorder.h */,
+				54FB38151ECBF54300177259 /* VideoRecorder.mm */,
 				547CB3481E35F04200DA636F /* Main.storyboard */,
 				547CB34B1E35F04200DA636F /* Assets.xcassets */,
 				547CB34D1E35F04200DA636F /* LaunchScreen.storyboard */,
@@ -86,8 +91,8 @@
 		547CB3561E35F0A500DA636F /* SMScreenRecording */ = {
 			isa = PBXGroup;
 			children = (
-				547CB3571E35F0A500DA636F /* UIView+SMScreenRecording.h */,
-				547CB3581E35F0A500DA636F /* UIView+SMScreenRecording.m */,
+				54FB38431ECC358400177259 /* SMScreenRecording.h */,
+				54FB38441ECC358400177259 /* SMScreenRecording.m */,
 			);
 			path = SMScreenRecording;
 			sourceTree = "<group>";
@@ -164,9 +169,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54FB38451ECC358400177259 /* SMScreenRecording.m in Sources */,
+				54FB38161ECBF54300177259 /* VideoRecorder.mm in Sources */,
 				547CB3471E35F04200DA636F /* ViewController.m in Sources */,
 				547CB3441E35F04200DA636F /* AppDelegate.m in Sources */,
-				547CB3591E35F0A500DA636F /* UIView+SMScreenRecording.m in Sources */,
 				547CB3411E35F04200DA636F /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -285,11 +291,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = C68XX9K82S;
 				INFOPLIST_FILE = SMScreenRecording/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zsm.SMScreenRecording;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
@@ -297,11 +306,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = C68XX9K82S;
 				INFOPLIST_FILE = SMScreenRecording/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zsm.SMScreenRecording;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};
@@ -315,7 +326,7 @@
 				547CB3521E35F04200DA636F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		547CB3531E35F04200DA636F /* Build configuration list for PBXNativeTarget "SMScreenRecording" */ = {
 			isa = XCConfigurationList;
@@ -324,6 +335,7 @@
 				547CB3551E35F04200DA636F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};

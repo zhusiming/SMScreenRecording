@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface ViewController : UIViewController
+#import <GLKit/GLKit.h>
+@interface ViewController : GLKViewController
 {
     __weak IBOutlet UIView *_movieView;
 }
